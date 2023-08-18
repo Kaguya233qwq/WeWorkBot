@@ -1,7 +1,11 @@
 from wework_bot.fuctions.message import MsgRules
 
 
-class Rule(object):
+class __BaseRule:
+    ...
+
+
+class Rule(__BaseRule):
     """消息响应规则类型选择器"""
 
     GROUP = 'group'
@@ -9,7 +13,7 @@ class Rule(object):
     BOTH = 'both'
 
 
-def __select_rule(
+def select_rule(
         wework_instance,
         message,
         rule: Rule
