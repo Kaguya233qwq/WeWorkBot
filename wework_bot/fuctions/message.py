@@ -111,6 +111,15 @@ class MsgRules(MsgInfo):
         else:
             return False
 
+    def to_me(self) -> bool:
+        """
+        是否@bot
+        """
+        if self.only_group() and self.at_me():
+            return True
+        else:
+            return False
+
     def from_userid(self, cmd: str) -> bool:
         """判断消息是否来源于指定发送人id，是返回True，不是返回False"""
         if cmd == self.get_sender_userid():
