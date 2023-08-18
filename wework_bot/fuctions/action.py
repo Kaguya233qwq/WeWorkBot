@@ -18,7 +18,7 @@ class Action:
             message,
             rule: Rule,
             cmd: str,
-            reply: any
+            reply: Any
     ):
         """根据命令返回一条消息"""
         # 消息类实例化
