@@ -91,6 +91,6 @@ class Action:
     @classmethod
     def get_external_contacts(cls):
         """
-        发送图片消息
+        获取外部联系人列表
         """
         wework.get_external_contacts()

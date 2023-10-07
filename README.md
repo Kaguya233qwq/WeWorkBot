@@ -24,4 +24,5 @@ def msg_handler(wework_instance: ntwork.WeWork, message):
 if __name__ == '__main__':
     run.forever()
 ```
-更多玩法请参考源码
+
+注意：ntwork只能运行在python3.10及其以下版本，并不兼容python3.11
