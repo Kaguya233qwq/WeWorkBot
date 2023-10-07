@@ -54,4 +54,4 @@ plugins文件夹下的插件都将在ntwork启动时自动导入
 
 2.原作者已将pipy上的包删除，所以用pip无法再安装ntwork
 
-解决方法：在本项目的releases中有一个ntwork的备份包pkg，需要者自行下载导入
+解决方法：在我的ntwork的fork分支项目的releases中有一个ntwork的备份包pkg，需要者自行下载导入
