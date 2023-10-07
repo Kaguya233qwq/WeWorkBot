@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import ntwork
 
+from .config import Config
+
 
 class MsgInfo:
     """消息详情属性类"""
@@ -90,14 +92,17 @@ class MsgRules(MsgInfo):
         """
         return True if self.only_group() and self.at_me() else False
 
-    def from_userid(self, cmd: str) -> bool:
+    def from_userid(self, from_id: str) -> bool:
         """判断消息是否来源于指定发送人id，是返回True，不是返回False"""
-        return True if cmd == self.get_sender_userid() else False
+        return True if from_id == self.get_sender_userid() else False
 
-    def from_name(self, cmd: str) -> bool:
+    def from_name(self, from_name: str) -> bool:
         """判断消息是否来源于指定发送人账号用户名，是返回True，不是返回False"""
-        return True if cmd == self.get_sender_name() else False
-
+        return True if from_name == self.get_sender_name() else False
+    
+    def is_su(self) -> bool:
+        """判断消息是否来源于超级用户"""
+        return True if self.get_sender_userid() in Config.SUPER_USERS else False
 
 class Cmd(MsgInfo):
     """自定义命令判定容器类"""
