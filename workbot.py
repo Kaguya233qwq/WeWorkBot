@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import ntwork
 
-from wework_bot.fuctions.config import load_config,update_config
 from wework_bot.fuctions.action import Action, wework
 from wework_bot.rule import Rule
 from wework_bot import run
@@ -28,5 +27,4 @@ def msg_handler(wework_instance: ntwork.WeWork, message):
 
 
 if __name__ == '__main__':
-    load_config()
     run.forever()
