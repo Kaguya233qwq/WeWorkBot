@@ -2,8 +2,10 @@
 import ntwork
 
 from .config import Config
+from ..utils.injector import class_inject_dependencies
 
 
+@class_inject_dependencies
 class MsgInfo:
     """消息详情属性类"""
 

@@ -5,8 +5,10 @@ from wework_bot.rule import Rule
 
 
 @wework.msg_register(ntwork.MT_RECV_TEXT_MSG)
-def msg_handler(wework_instance: ntwork.WeWork, message):
+def msg_handler(wework: ntwork.WeWork,message):
     #  菜单命令
+    print(wework.get_rooms())
+    #
     menu = (
         ' [玫瑰]欢迎使用[玫瑰]\n'
         ' [玫瑰]今日问候[玫瑰]\n'
@@ -16,7 +18,6 @@ def msg_handler(wework_instance: ntwork.WeWork, message):
         ' [玫瑰]其他功能[玫瑰]'
     )
     Action.reply_msg(
-        wework_instance,
         message,
         rule=Rule.PRIVATE,
         cmd='/菜单',

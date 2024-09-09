@@ -14,7 +14,6 @@ class Action:
     @classmethod
     def reply_msg(
             cls,
-            wework_instance: ntwork.WeWork,
             message,
             rule: Rule,
             cmd: str,
@@ -22,20 +21,10 @@ class Action:
     ):
         """根据命令返回一条消息"""
         # 消息类实例化
-        conversation = MsgInfo(
-            wework_instance,
-            message
-        ).get_conversation_id()  # 实例化消息属性类并获取会话id
+        conversation = MsgInfo(message).get_conversation_id()  # 实例化消息属性类并获取会话id
 
-        cmd_param = Cmd(
-            wework_instance,
-            message
-        ).cmd_starts(cmd)  # 实例化自定义命令类
-        check = select_rule(
-            wework_instance,
-            message,
-            rule=rule
-        )
+        cmd_param = Cmd(message).cmd_starts(cmd)  # 实例化自定义命令类
+        check = select_rule(message,rule)
         if check and cmd_param:
             wework.send_text(
                 conversation,

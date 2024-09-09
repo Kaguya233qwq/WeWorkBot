@@ -23,11 +23,10 @@ class Rule(__BaseRule):
 
 
 def select_rule(
-        wework_instance,
         message,
         rule: Rule
 ):
-    rule_ = MsgRules(wework_instance, message)
+    rule_ = MsgRules(message)
     if rule == Rule.PRIVATE:
         return rule_.only_private()
     elif rule == Rule.GROUP:
