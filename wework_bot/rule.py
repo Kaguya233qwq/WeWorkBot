@@ -1,8 +1,7 @@
-from wework_bot.fuctions.message import MsgRules
+from wework_bot.fuctions.message import Message
 
 
-class __BaseRule:
-    ...
+class __BaseRule: ...
 
 
 class Rule(__BaseRule):
@@ -15,28 +14,23 @@ class Rule(__BaseRule):
     - SU: 仅超级用户
     """
 
-    GROUP = 'group'
-    PRIVATE = 'private'
-    BOTH = 'both'
-    TO_ME = 'to_me'
-    SU = 'su'
+    GROUP = "group"
+    PRIVATE = "private"
+    BOTH = "both"
+    TO_ME = "to_me"
+    SU = "su"
 
 
-def select_rule(
-        wework_instance,
-        message,
-        rule: Rule
-):
-    rule_ = MsgRules(wework_instance, message)
+def rule_checker(message: Message, rule: Rule):
     if rule == Rule.PRIVATE:
-        return rule_.only_private()
+        return message.from_private()
     elif rule == Rule.GROUP:
-        return rule_.only_group()
+        return message.from_group()
     elif rule == Rule.BOTH:
-        return rule_.both()
+        return message.sender_not_me()
     elif rule == Rule.TO_ME:
-        return rule_.to_me()
+        return message.from_private() or message.at_me()
     elif rule == Rule.SU:
-        return rule_.is_su()
+        return message.is_su()
     else:
-        raise TypeError('仅能为 class:Rule')
+        raise TypeError("仅能为 class:Rule")
